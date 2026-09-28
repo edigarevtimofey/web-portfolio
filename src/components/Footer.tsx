@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { brand, contacts } from "../content";
 import { Logo } from "./Logo";
 
@@ -18,7 +19,16 @@ export function Footer() {
             </>
           ) : null}
         </p>
-        <a href="#top">Наверх</a>
+        <Link
+          to="#top"
+          onMouseDown={(event) => event.preventDefault()}
+          onClick={() => {
+            const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            window.scrollTo({ top: 0, left: 0, behavior: reduce ? "instant" : "smooth" });
+          }}
+        >
+          Наверх
+        </Link>
       </div>
     </footer>
   );

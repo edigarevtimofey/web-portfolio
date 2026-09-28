@@ -25,20 +25,24 @@ export function Header() {
     const sections = nav
       .filter((item) => item.hash)
       .map((item) => document.querySelector(item.hash))
-      .filter((node): node is Element => node instanceof Element);
+      .filter((node): node is HTMLElement => node instanceof HTMLElement);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0.1, 0.25, 0.5] },
-    );
+    const pick = () => {
+      const line = Math.min(220, window.innerHeight * 0.35);
+      let current = "";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= line) current = `#${section.id}`;
+      }
+      setActive(current);
+    };
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    pick();
+    window.addEventListener("scroll", pick, { passive: true });
+    window.addEventListener("resize", pick);
+    return () => {
+      window.removeEventListener("scroll", pick);
+      window.removeEventListener("resize", pick);
+    };
   }, [location.pathname]);
 
   useEffect(() => {

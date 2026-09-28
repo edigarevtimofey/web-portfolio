@@ -16,6 +16,11 @@ function scrollToLocation(location: Location, opening: boolean) {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const behavior: ScrollBehavior = opening || reduce ? "instant" : "smooth";
 
+  if (location.hash === "#top") {
+    window.scrollTo({ top: 0, left: 0, behavior });
+    return;
+  }
+
   if (location.hash) {
     const target = document.getElementById(location.hash.slice(1));
     if (target) {

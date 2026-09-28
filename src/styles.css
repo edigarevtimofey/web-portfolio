@@ -675,7 +675,6 @@ h3 {
 
 .service-detail .button,
 .portfolio-invite-card .button,
-.contact-grid .form .button,
 .contact-grid .button-ghost {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
   color: var(--cream);
@@ -688,8 +687,6 @@ h3 {
 .service-detail .button:focus-visible,
 .portfolio-invite-card .button:hover,
 .portfolio-invite-card .button:focus-visible,
-.contact-grid .form .button:hover,
-.contact-grid .form .button:focus-visible,
 .contact-grid .button-ghost:hover,
 .contact-grid .button-ghost:focus-visible {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14));
@@ -986,110 +983,52 @@ h3 {
   color: #9aa6ff;
 }
 
-.contact-grid .section-note,
-.form-status {
+.contact-grid .section-note {
   color: rgba(247, 244, 238, 0.72);
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 18px;
-  margin-top: 28px;
 }
 
 .contact-grid .button-ghost {
   color: var(--cream);
 }
 
-.contact-grid .text-link {
+.contact-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list a {
+  display: grid;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  box-shadow: var(--glass-rim-dark);
   color: var(--cream);
+  text-decoration: none;
 }
 
-.form {
-  display: grid;
-  gap: 14px;
+.contact-list a:hover,
+.contact-list a:focus-visible {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.1));
 }
 
-.form label {
-  display: grid;
-  gap: 8px;
-  font-size: 0.82rem;
+.contact-list span {
+  color: #9aa6ff;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.form input,
-.form select,
-.form textarea {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  backdrop-filter: blur(16px) saturate(1.4);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  padding: 14px 14px;
-  text-transform: none;
-  letter-spacing: 0;
+.contact-list strong {
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
   font-weight: 500;
-}
-
-.form textarea {
-  resize: vertical;
-  min-height: 130px;
-}
-
-.form input:focus,
-.form select:focus,
-.form textarea:focus {
-  outline: 2px solid #9aa6ff;
-  border-color: transparent;
-}
-
-.form select {
-  appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, var(--cream) 50%),
-    linear-gradient(135deg, var(--cream) 50%, transparent 50%);
-  background-position:
-    calc(100% - 18px) 22px,
-    calc(100% - 12px) 22px;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-}
-
-.form-status {
-  margin: 0;
-}
-
-.form-status.is-error {
-  color: #ffb4a8;
-}
-
-.form-status.is-ok {
-  color: #d5f5a4;
-}
-
-.contact-grid .form .button {
-  justify-self: start;
-  width: auto;
-}
-
-.brief {
-  margin: 0;
-  padding: 14px;
-  border-radius: 12px;
-  background: rgba(247, 244, 238, 0.06);
-  color: var(--cream);
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.5;
-  text-transform: none;
-  white-space: pre-wrap;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
 }
 
 .projects-page {
@@ -1236,10 +1175,11 @@ h3 {
 }
 
 .saw {
+  --saw-w: 300px;
   position: absolute;
   top: 0;
-  left: -340px;
-  width: 300px;
+  left: calc(var(--saw-w) * -1 - 40px);
+  width: var(--saw-w);
   transform: translateY(-80%);
 }
 
@@ -1250,7 +1190,7 @@ h3 {
 .saw-tool {
   position: relative;
   display: block;
-  width: 300px;
+  width: 100%;
 }
 
 .saw-body {
@@ -1371,10 +1311,11 @@ h3 {
 }
 
 .shears {
+  --shears-w: 360px;
   position: absolute;
   top: 0;
-  left: -380px;
-  width: 360px;
+  left: calc(var(--shears-w) * -1 - 20px);
+  width: var(--shears-w);
   transform: translateY(-44%);
   filter: drop-shadow(0 8px 8px rgba(60, 40, 16, 0.18));
 }
@@ -1585,10 +1526,11 @@ h3 {
 }
 
 .hammer {
+  --hammer-face: 30.2%;
   position: absolute;
   z-index: 2;
   bottom: 18px;
-  left: calc(8% - 30.2%);
+  left: calc(8% - var(--hammer-face));
   width: 32%;
   transform-origin: 2% 52%;
   transform: rotate(-28deg);
@@ -1875,7 +1817,7 @@ h3 {
 
 @keyframes shear-travel {
   from {
-    left: -380px;
+    left: calc(var(--shears-w) * -1 - 20px);
   }
   to {
     left: calc(100% + 28px);
@@ -1947,75 +1889,75 @@ h3 {
 @keyframes hammer-drive {
   0%,
   4% {
-    left: calc(8% - 30.2%);
+    left: calc(8% - var(--hammer-face));
     transform: rotate(-28deg);
   }
   9% {
-    left: calc(8% - 30.2%);
+    left: calc(8% - var(--hammer-face));
     transform: rotate(-4deg);
   }
   13% {
-    left: calc(8% - 30.2%);
+    left: calc(8% - var(--hammer-face));
     transform: rotate(-16deg);
   }
   18%,
   22% {
-    left: calc(30% - 30.2%);
+    left: calc(30% - var(--hammer-face));
     transform: rotate(-28deg);
   }
   27% {
-    left: calc(30% - 30.2%);
+    left: calc(30% - var(--hammer-face));
     transform: rotate(-4deg);
   }
   31% {
-    left: calc(30% - 30.2%);
+    left: calc(30% - var(--hammer-face));
     transform: rotate(-16deg);
   }
   36%,
   40% {
-    left: calc(52% - 30.2%);
+    left: calc(52% - var(--hammer-face));
     transform: rotate(-28deg);
   }
   45% {
-    left: calc(52% - 30.2%);
+    left: calc(52% - var(--hammer-face));
     transform: rotate(-4deg);
   }
   49% {
-    left: calc(52% - 30.2%);
+    left: calc(52% - var(--hammer-face));
     transform: rotate(-16deg);
   }
   54%,
   58% {
-    left: calc(74% - 30.2%);
+    left: calc(74% - var(--hammer-face));
     transform: rotate(-28deg);
   }
   63% {
-    left: calc(74% - 30.2%);
+    left: calc(74% - var(--hammer-face));
     transform: rotate(-4deg);
   }
   67% {
-    left: calc(74% - 30.2%);
+    left: calc(74% - var(--hammer-face));
     transform: rotate(-16deg);
   }
   72%,
   76% {
-    left: calc(96% - 30.2%);
+    left: calc(96% - var(--hammer-face));
     transform: rotate(-28deg);
   }
   81% {
-    left: calc(96% - 30.2%);
+    left: calc(96% - var(--hammer-face));
     transform: rotate(-4deg);
   }
   86%,
   100% {
-    left: calc(96% - 30.2%);
+    left: calc(96% - var(--hammer-face));
     transform: rotate(-12deg);
   }
 }
 
 @keyframes saw-travel {
   from {
-    left: -340px;
+    left: calc(var(--saw-w) * -1 - 40px);
   }
   to {
     left: calc(100% + 40px);
@@ -2180,7 +2122,7 @@ h3 {
     padding: 12px;
     border: 1px solid var(--glass-line);
     border-radius: 22px;
-    background: var(--glass-fill);
+    background: var(--paper);
     -webkit-backdrop-filter: var(--glass-filter);
     backdrop-filter: var(--glass-filter);
     box-shadow:
@@ -2197,6 +2139,25 @@ h3 {
     width: 100%;
     margin: 0;
     padding: 12px;
+    border-radius: 14px;
+  }
+
+  .nav a:not(.button):hover,
+  .nav a:not(.button):focus-visible {
+    background: rgba(36, 54, 242, 0.08);
+    color: var(--blue);
+  }
+
+  .nav a.is-active:not(.button) {
+    background: rgba(36, 54, 242, 0.12);
+    color: var(--blue);
+    box-shadow: none;
+  }
+
+  .nav a.is-active:not(.button):hover,
+  .nav a.is-active:not(.button):focus-visible {
+    background: rgba(36, 54, 242, 0.18);
+    color: var(--blue);
   }
 
   .contact-grid,
@@ -2246,6 +2207,50 @@ h3 {
   .project-meta {
     grid-template-columns: 1fr;
   }
+
+  .saw {
+    --saw-w: 156px;
+  }
+
+  .shears {
+    --shears-w: 176px;
+  }
+
+  .hammer {
+    --hammer-face: 17%;
+    bottom: 10px;
+    width: 18%;
+  }
+
+  .nail-spot {
+    width: 8px;
+    height: 12px;
+    margin-left: -4px;
+  }
+
+  .nail {
+    width: 6px;
+    height: 10px;
+  }
+
+  .nail-head {
+    width: 6px;
+    height: 2px;
+  }
+
+  .nail-shaft {
+    width: 2px;
+  }
+
+  .nail-sparks i {
+    width: 3px;
+    height: 2px;
+  }
+
+  .nail-sparks i:nth-child(2n) {
+    width: 2px;
+    height: 2px;
+  }
 }
 
 ::view-transition-group(site-header) {
@@ -2288,9 +2293,7 @@ html[data-nav="projects"]::view-transition-new(root) {
   .service-detail,
   .portfolio-invite-card,
   .contact-grid,
-  .form input,
-  .form select,
-  .form textarea {
+  .contact-list a {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -2318,8 +2321,8 @@ html[data-nav="projects"]::view-transition-new(root) {
 
   .service-detail .button,
   .portfolio-invite-card .button,
-  .contact-grid .form .button,
-  .contact-grid .button-ghost {
+  .contact-grid .button-ghost,
+  .contact-list a {
     background: rgba(255, 255, 255, 0.14);
     box-shadow: none;
   }

@@ -1,13 +1,13 @@
-/** Тексты и контакты сайта. Контакты появятся кнопками, когда поля заполнены. */
+/** Тексты и контакты сайта. */
 export const brand = {
   name: "Kane13",
   role: "Веб-разработка",
 };
 
 export const contacts = {
-  email: "",
-  telegram: "",
-  telegramLabel: "",
+  email: "kane13.development@yandex.ru",
+  telegram: "https://t.me/zjmonk",
+  telegramLabel: "@zjmonk",
 };
 
 export const taskOptions = [
