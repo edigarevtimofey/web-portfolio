@@ -1562,8 +1562,7 @@ h3 {
   background: #efeae0;
 }
 
-.shot-grid figure:first-child,
-.shot-grid figure.shot-wide {
+.shot-grid figure:first-child {
   grid-column: 1 / -1;
 }
 
@@ -1639,113 +1638,6 @@ h3 {
 .project li {
   padding: 11px 0;
   border-top: 1px solid var(--line);
-}
-
-.screen {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--paper);
-}
-
-.screen-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 14px;
-  background: var(--paper-2);
-}
-
-.screen-bar i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #c8c2b4;
-}
-
-.screen-bar i:first-child {
-  background: #ff5a36;
-}
-
-.screen-bar span {
-  margin-left: 8px;
-  color: var(--muted);
-  font-size: 0.75rem;
-}
-
-.screen-body {
-  padding: 22px;
-}
-
-.screen-body small {
-  color: var(--blue);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.screen-body strong {
-  display: block;
-  margin: 10px 0;
-  font-family: var(--display);
-  font-size: 1.35rem;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-}
-
-.screen-body p {
-  color: var(--muted);
-}
-
-.screen-body > b,
-.screen-pill {
-  display: inline-flex;
-  margin-top: 16px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--cream);
-  padding: 10px 14px;
-  font-size: 0.82rem;
-}
-
-.screen-nav {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 16px;
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.screen-tiles,
-.screen-goods {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.screen-tiles i,
-.screen-goods i {
-  display: grid;
-  min-height: 72px;
-  align-content: end;
-  border-radius: 12px;
-  background: white;
-  color: var(--ink);
-  padding: 10px;
-  font-style: normal;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.screen-goods i b {
-  height: 28px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  background: var(--paper-2);
 }
 
 .project-end {

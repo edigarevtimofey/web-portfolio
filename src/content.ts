@@ -32,7 +32,6 @@ export const nav = [
 export const services: {
   index: string;
   title: string;
-  task: TaskOption;
   term: string;
   summary: string;
   points: string[];
@@ -40,7 +39,6 @@ export const services: {
   {
     index: "01",
     title: "Лендинги",
-    task: "Лендинг",
     term: "7–14 дней",
     summary:
       "Одна страница под один оффер: реклама, запуск продукта или сбор заявок. Посетитель быстро понимает, что вы предлагаете, и оставляет контакт.",
@@ -54,7 +52,6 @@ export const services: {
   {
     index: "02",
     title: "Сайты компаний",
-    task: "Сайт компании",
     term: "2–4 недели",
     summary:
       "Многостраничный сайт, который представляет услуги, команду и кейсы. Подходит, когда одной посадочной уже мало.",
@@ -68,7 +65,6 @@ export const services: {
   {
     index: "03",
     title: "Интернет-магазины",
-    task: "Интернет-магазин",
     term: "3–6 недель",
     summary:
       "Витрина с каталогом, карточкой товара и понятным путём к заказу. Объём зависит от числа сценариев и интеграций.",
@@ -82,7 +78,6 @@ export const services: {
   {
     index: "04",
     title: "Веб-приложения",
-    task: "Веб-приложение",
     term: "от 4 недель",
     summary:
       "Сервисы, личные кабинеты и внутренние инструменты. Сначала фиксируем сценарии, затем собираем интерфейс и логику.",
@@ -96,7 +91,6 @@ export const services: {
   {
     index: "05",
     title: "Редизайн",
-    task: "Редизайн",
     term: "1–3 недели",
     summary:
       "Обновляем существующий сайт: структуру, визуал и вёрстку. Смысл бизнеса остаётся, устаревшая подача уходит.",
@@ -110,7 +104,6 @@ export const services: {
   {
     index: "06",
     title: "Поддержка",
-    task: "Поддержка",
     term: "помесячно",
     summary:
       "После запуска сайт не замирает: новые блоки, правки текстов, мелкие улучшения и техническое сопровождение.",
@@ -256,10 +249,9 @@ export const projects: {
   task: string;
   scope: string;
   points: string[];
-  kind: "landing" | "company" | "shop";
   intro?: "saw" | "scissors" | "hammer";
   status?: string;
-  shots?: { src: string; alt: string; caption: string; wide?: boolean }[];
+  shots: { src: string; alt: string; caption: string; width: number; height: number }[];
 }[] = [
   {
     slug: "detalnya",
@@ -278,28 +270,35 @@ export const projects: {
       "Оформление: самовывоз в Петербурге, доставка СДЭК и оплата",
       "Кабинет для товаров, декоров и заявок",
     ],
-    kind: "shop",
     intro: "saw",
     shots: [
       {
         src: "/projects/detalnya/cut.jpg",
         alt: "Конструктор раскроя ЛДСП: размер, декор и схема кромки",
         caption: "Конструктор раскроя",
+        width: 1600,
+        height: 1220,
       },
       {
         src: "/projects/detalnya/home.jpg",
         alt: "Главная Детальни: всё, чтобы собрать мебель своими руками",
         caption: "Главная",
+        width: 1600,
+        height: 1220,
       },
       {
         src: "/projects/detalnya/parts.jpg",
         alt: "Каталог готовых полок стандартных размеров",
         caption: "Готовые детали",
+        width: 1600,
+        height: 1220,
       },
       {
         src: "/projects/detalnya/palette.jpg",
         alt: "Палитра декоров: EGGER Дуб Каселла коричневый",
         caption: "Палитра декоров",
+        width: 1600,
+        height: 1220,
       },
     ],
   },
@@ -319,23 +318,28 @@ export const projects: {
       "Карточка модели и кнопка «Хочу эту»",
       "Заявка с выбором модели попадает в раздел заявок",
     ],
-    kind: "shop",
     intro: "scissors",
     shots: [
       {
         src: "/projects/khurma/home.jpg",
         alt: "Главная Хурма: сумки, которые носят годами, и модель «Седельная»",
         caption: "Главная",
+        width: 1600,
+        height: 900,
       },
       {
         src: "/projects/khurma/collection.jpg",
         alt: "Коллекция: тоут «Поле», кроссбоди «Нить» и шоппер «Кромка»",
         caption: "Коллекция",
+        width: 1600,
+        height: 900,
       },
       {
         src: "/projects/khurma/model.jpg",
         alt: "Карточка кроссбоди «Нить» и заявка с уже выбранной моделью",
         caption: "Карточка модели",
+        width: 1600,
+        height: 900,
       },
     ],
   },
@@ -355,23 +359,28 @@ export const projects: {
       "Калькулятор площади, этажности и комплектации",
       "Заявка на смету с уже выбранным проектом",
     ],
-    kind: "landing",
     intro: "hammer",
     shots: [
       {
         src: "/projects/karkas/home.jpg",
         alt: "Главная Каркас: дом из дерева за одно лето и кнопка «Получить смету»",
         caption: "Главная",
+        width: 1600,
+        height: 956,
       },
       {
         src: "/projects/karkas/houses.jpg",
         alt: "Каталог домов: Сосна, Берёза, Кедр и Лиственница",
         caption: "Дома",
+        width: 1600,
+        height: 1415,
       },
       {
         src: "/projects/karkas/calc.jpg",
         alt: "Калькулятор стоимости и заявка на смету",
         caption: "Смета и заявка",
+        width: 1600,
+        height: 877,
       },
     ],
   },

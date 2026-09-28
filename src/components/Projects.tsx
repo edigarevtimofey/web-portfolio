@@ -198,7 +198,7 @@ function HammerGate({
             onDriveEnd();
           }}
         >
-          <img alt="" className="hammer-photo" src="/hammer/body.png?v=4" />
+          <img alt="" className="hammer-photo" src="/hammer/body.png?v=4" width={979} height={386} decoding="async" />
         </div>
       </div>
     </div>
@@ -362,7 +362,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
               }}
             >
               <span className="saw-tool">
-                <img alt="" className="saw-body" src="/saw/body.png" />
+                <img alt="" className="saw-body" src="/saw/body.png" width={621} height={474} decoding="async" />
                 <span className="saw-dust">
                   {sawDust.map((chip, index) => (
                     <i
@@ -424,11 +424,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
             ))}
           </ul>
         </div>
-        {project.shots ? (
-          <ProjectShots shots={project.shots} />
-        ) : (
-          <ProjectScreen kind={project.kind} title={project.title} />
-        )}
+        <ProjectShots shots={project.shots} />
       </div>
     </article>
   );
@@ -442,8 +438,15 @@ function ProjectShots({
   return (
     <div className="shot-grid">
       {shots.map((shot) => (
-        <figure className={shot.wide ? "shot-wide" : undefined} key={shot.src}>
-          <img src={shot.src} alt={shot.alt} />
+        <figure key={shot.src}>
+          <img
+            src={shot.src}
+            alt={shot.alt}
+            width={shot.width}
+            height={shot.height}
+            loading="lazy"
+            decoding="async"
+          />
           <figcaption>{shot.caption}</figcaption>
         </figure>
       ))}
@@ -451,65 +454,3 @@ function ProjectShots({
   );
 }
 
-function ProjectScreen({ kind, title }: { kind: (typeof projects)[number]["kind"]; title: string }) {
-  return (
-    <div className={`screen screen-${kind}`} aria-hidden="true">
-      <div className="screen-bar">
-        <i />
-        <i />
-        <i />
-        <span>{title}</span>
-      </div>
-      {kind === "landing" && (
-        <div className="screen-body">
-          <small>Набор открыт</small>
-          <strong>Четыре недели практики, одна группа</strong>
-          <p>Программа, формат и заявка на одной странице.</p>
-          <b>Оставить заявку</b>
-        </div>
-      )}
-      {kind === "company" && (
-        <div className="screen-body">
-          <div className="screen-nav">
-            <span>Работы</span>
-            <span>Подход</span>
-            <span>Контакт</span>
-          </div>
-          <strong>Мастерская частных домов</strong>
-          <div className="screen-tiles">
-            <i>Дом у воды</i>
-            <i>Двор</i>
-            <i>Мастерская</i>
-            <i>Сад</i>
-          </div>
-        </div>
-      )}
-      {kind === "shop" && (
-        <div className="screen-body">
-          <div className="screen-nav">
-            <span>Каталог</span>
-            <span>Корзина</span>
-          </div>
-          <div className="screen-goods">
-            <i>
-              <b />
-              Поле
-            </i>
-            <i>
-              <b />
-              Север
-            </i>
-            <i>
-              <b />
-              Тишь
-            </i>
-            <i>
-              <b />
-              Край
-            </i>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}

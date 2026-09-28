@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { services } from "../content";
-import { useSelection } from "../selection";
+
+function scrollToContact() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById("contact")?.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
+}
 
 export function Services() {
   const [current, setCurrent] = useState(0);
-  const { setTask } = useSelection();
   const service = services[current];
-
-  const discuss = (task: (typeof services)[number]["task"]) => {
-    setTask(task);
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section className="section" id="services">
@@ -47,7 +45,7 @@ export function Services() {
                 <li key={point}>{point}</li>
               ))}
             </ul>
-            <button className="button" type="button" onClick={() => discuss(service.task)}>
+            <button className="button" type="button" onClick={scrollToContact}>
               Обсудить услугу
             </button>
           </article>

@@ -1,8 +1,10 @@
 import { formats } from "../content";
-import { useSelection } from "../selection";
 
 export function Formats() {
-  const { setTask } = useSelection();
+  const discuss = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("contact")?.scrollIntoView({ behavior: reduce ? "instant" : "smooth" });
+  };
 
   return (
     <section className="section" id="formats">
@@ -25,14 +27,7 @@ export function Formats() {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-              <button
-                className="text-link"
-                type="button"
-                onClick={() => {
-                  setTask(format.task);
-                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
+              <button className="text-link" type="button" onClick={discuss}>
                 Обсудить формат
               </button>
             </article>
