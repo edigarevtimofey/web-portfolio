@@ -5,7 +5,7 @@ export function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="section section-tight" id="faq">
+    <section className="section" id="faq">
       <div className="wrap faq-layout">
         <div className="section-head">
           <p className="kicker">04 — Вопросы</p>

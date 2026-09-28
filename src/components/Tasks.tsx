@@ -2,7 +2,7 @@ import { principles, tasks } from "../content";
 
 export function Tasks() {
   return (
-    <section className="section section-tight" id="approach">
+    <section className="section" id="approach">
       <div className="wrap">
         <div className="section-head">
           <p className="kicker">02 — Задачи</p>

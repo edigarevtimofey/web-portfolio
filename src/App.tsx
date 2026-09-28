@@ -12,7 +12,7 @@ import { Projects } from "./components/Projects";
 import { Services } from "./components/Services";
 import { Tasks } from "./components/Tasks";
 
-function scrollToLocation(location: Location, opening: boolean) {
+function scrollToLocation(location: Location, opening: boolean, samePage = false) {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const behavior: ScrollBehavior = opening || reduce ? "instant" : "smooth";
 
@@ -29,7 +29,7 @@ function scrollToLocation(location: Location, opening: boolean) {
     }
   }
 
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  window.scrollTo({ top: 0, left: 0, behavior: samePage ? behavior : "instant" });
 }
 
 function PageTransition({ location }: { location: Location }) {
@@ -47,22 +47,28 @@ function PageTransition({ location }: { location: Location }) {
     displayed.current = location;
 
     const toProjects = !opening && previous.pathname !== "/projects" && location.pathname === "/projects";
+    const toHome = !opening && previous.pathname === "/projects" && location.pathname === "/";
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const samePage = previous.pathname === location.pathname;
+    const direction = toProjects ? "projects" : toHome ? "home" : "";
     const canTransition =
-      toProjects &&
+      direction !== "" &&
       !reduce &&
       typeof document.startViewTransition === "function";
 
     if (canTransition) {
       const root = document.documentElement;
-      root.dataset.nav = "projects";
+      root.dataset.nav = direction;
       const transition = document.startViewTransition(() => {
         flushSync(() => setRouteLocation(location));
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        if (direction === "home" && location.hash) {
+          scrollToLocation(location, true);
+        } else {
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        }
       });
       transition.finished.finally(() => {
-        if (root.dataset.nav === "projects") delete root.dataset.nav;
+        if (root.dataset.nav === direction) delete root.dataset.nav;
       });
       return;
     }
@@ -73,7 +79,7 @@ function PageTransition({ location }: { location: Location }) {
       return;
     }
 
-    scrollToLocation(location, opening);
+    scrollToLocation(location, opening, samePage);
   }, [location]);
 
   useLayoutEffect(() => {
@@ -94,7 +100,7 @@ function PageTransition({ location }: { location: Location }) {
 
 function Home() {
   return (
-    <main>
+    <main className="home">
       <a className="skip" href="#services">
         К услугам
       </a>
